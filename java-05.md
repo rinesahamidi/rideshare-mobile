@@ -16,7 +16,7 @@ Ne DevTools e ndryshova `id` nga 2 ne 1 dhe klikova "Ruaj oren". U shfaq "Nuk ke
 ## Ku gjendet puna
 - Repository: https://github.com/rinesahamidi/rideshare-mobile
 - `aplikacioni/schema-java05.sql`
-- Skedare te rinj: `src/lib/auth.ts`, `src/lib/lejet.ts`, `src/app/api/auth/[...nextauth]/route.ts`, `src/components/hyrja.tsx`, `src/app/panel/page.tsx`, `src/app/panel/actions.ts`
+- Skedare te rinj: `src/lib/auth.ts`, `src/lib/lejet.ts`, `src/app/api/auth/[...nextauth]/route.ts`, `src/components/Hyrja.tsx`, `src/app/panel/page.tsx`, `src/app/panel/actions.ts`
 
 ## Çfarë mbetet për përmirësim
 Kerkesa per vend eshte ende simulim. Me pas do te shtoja nje tabele per kerkesat, qe shoferi t'i shohe dhe t'i pranoje.

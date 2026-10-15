@@ -1,5 +1,5 @@
 import Link from "next/link";
-import Hyrja from "@/components/hyrja";
+import Hyrja from "@/components/Hyrja";
 import { profiliIm } from "@/lib/lejet";
 import { ruajOren } from "./actions";
 
