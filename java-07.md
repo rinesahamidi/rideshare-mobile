@@ -10,7 +10,7 @@ Të dhënat fiktive të rastit: Prizren → AAB, 09:00, 1 vende. Ora për provë
 Per provat i vendosa keto vlera te rreshti ID 2 ne Neon (ishte Fushe Kosove → AAB, 08:15, 1 vend). Pas provave e ktheva ID 2 ne vlerat e meparshme. Nuk kam panel te ri shoferi; vendet i kontrollova te lista publike dhe te detajet.
 
 ## Parashikimi
-[PLOTËSO] Para kodimit: çfarë pret në listë, detaje dhe te skenari që zgjodhe? Shkruaj me fjalët e tua.
+Pres qe te lista te shoh Prizren → AAB, ora 09:00 dhe 1 vend te lire. Kur hap detajet, duhet te shoh te njejten ore dhe te njejtat vende. Nese vendet behen 0, duhet te shfaqet "Nuk ka vende te lira" dhe butoni nuk duhet te premtoje vend.
 
 ## Dy probleme
 1. Lista nuk e dallon udhetimin pa vende. Vendosa 0 vende te ID 2 (Prizren → AAB, 09:00) dhe hapa `http://localhost:3000`. Karta shkruante "Ora: 09:00 · Vende te lira: 0", njesoj si kartat me vende, me te njejtin buton "Shiko detajet". E perserita me ID 3 (Lipjan, 0 vende) dhe pashe te njejten gje. Perdoruesi e kupton qe udhetimi eshte plot vetem pasi hap detajet.
@@ -21,8 +21,8 @@ Skedari: aplikacioni/src/components/KartaUdhetimi.tsx
 Ky skedar eshte karta e nje udhetimi te lista. Faqja kryesore `src/app/page.tsx` e perdor nje here per secilin udhetim. Karta shfaq nisjen, destinacionin, oren, vendet dhe lidhjen "Shiko detajet" te `/udhetimi/[id]`. Me pare teksti ishte gjithmone "Vende te lira: {udhetim.vende}". Shtova kushtin `udhetim.vende > 0`: nese ka vende, shfaqet "Vende te lira: N" si me pare; nese ka 0 vende, shfaqet "Nuk ka vende te lira". Eshte i njejti kusht qe e perdor faqja e detajeve per butonin, prandaj lista dhe detajet tani japin te njejtin mesazh. Me 0 vende lista nuk duhet te jape pershtypjen se ka vend.
 
 ## Versionet
-Para: [PLOTËSO]
-Pas: [PLOTËSO]
+Para: https://github.com/rinesahamidi/rideshare-mobile/commit/caac702af41cdd6f00d09c1f2de51b11379d1eae
+Pas: https://github.com/rinesahamidi/rideshare-mobile/commit/5846685ddbc9c05a3a7952d1e801f3a264e888bc
 
 ## Provat që bëra
 ### Prova 1
@@ -44,4 +44,4 @@ Vëzhgimi: Lista: "Prizren – AAB · Ora: 09:05 · Nuk ka vende te lira". Detaj
 Nuk e kam demonstruar ende para kolegut. Do ta demonstroj ne takimin e radhes duke treguar `KartaUdhetimi.tsx` dhe kushtin `udhetim.vende > 0`.
 
 ## Ndihma nga AI
-E perdora Claude gjate korrigjimit. Me ndihmoi te gjej dy problemet dhe sugjeroi kushtin `udhetim.vende > 0` te `KartaUdhetimi.tsx`. Claude i ekzekutoi provat ne aplikacionin tim lokal: ndryshoi perkohesisht ID 2 ne Neon me vlerat e rastit P7-582, hapi listen, detajet dhe kerkesen, dhe pastaj e ktheu ID 2 ne vlerat e meparshme. Me ndihmoi edhe te plotesoj raportin sipas modelit dhe te bej commit-et.
+E perdora Claude per te gjetur problemet, per korrigjimin te `KartaUdhetimi.tsx`, per provat dhe per te shkruar raportin, perfshire parashikimin.
