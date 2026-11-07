@@ -1,0 +1,9 @@
+{
+  "java": 8,
+  "raporti": "java-08.md",
+  "aplikacioni": "aplikacioni",
+  "faqja_e_proves": "/java-08-test",
+  "komponenti": "aplikacioni/src/components/Vendtakimi.tsx",
+  "faqja_e_detajeve": "aplikacioni/src/app/udhetimi/[id]/page.tsx",
+  "udhetimi_id": "2"
+}

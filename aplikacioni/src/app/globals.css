@@ -36,4 +36,8 @@ main { max-width: 720px; margin: auto; padding: 24px; }
   margin-top: 12px; padding: 8px 14px; border-radius: 8px;
   background: #3548d4; color: white; }
 .action:disabled { background: #39455b; color: #e4eaf4; cursor: default; }  
+.vendtakimi { display: grid; gap: 8px; margin-top: 24px; max-width: 360px; }
+.vendtakimi input { min-height: 44px; padding: 8px 12px; border-radius: 8px;
+  border: 1px solid #8090aa; background: #111a2e; color: inherit; }
+.vendtakimi .action { margin-top: 0; justify-self: start; }
 h1 { font-size: 1.6rem; font-weight: 700; margin-bottom: 8px; }
