@@ -15,7 +15,7 @@ export default function Java08Test() {
       <Link href="/">← Kthehu te lista</Link>
       <h1>RideShare</h1>
       <p>Arta · udhëtimi i Dritonit</p>
-      <p data-testid="udhetimi-test">
+      <p>
         Udhëtimi {udhetim.id} · {udhetim.nisja} → {udhetim.destinacioni} · {udhetim.ora}
       </p>
       <Vendtakimi />

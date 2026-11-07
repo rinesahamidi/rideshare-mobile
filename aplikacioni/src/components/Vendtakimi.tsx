@@ -3,12 +3,15 @@ import { useState } from "react";
 
 // Gjendja jeton vetëm në këtë shfletues: pas rifreskimit humbet
 // dhe shoferi nuk e sheh. Koordinatat nuk ruhen e nuk shfaqen.
+type Gjendja = "idle" | "loading" | "success" | "denied" | "timeout" | "unavailable";
+
 export function Vendtakimi() {
   const [teksti, setTeksti] = useState("");
   const [vendtakimi, setVendtakimi] = useState("");
   const [gabimFushe, setGabimFushe] = useState("");
-  const [pritje, setPritje] = useState(false);
+  const [gjendja, setGjendja] = useState<Gjendja>("idle");
   const [mesazh, setMesazh] = useState("");
+  const [saktesia, setSaktesia] = useState<number | null>(null);
 
   function konfirmo() {
     const pastruar = teksti.trim();
@@ -21,30 +24,34 @@ export function Vendtakimi() {
   }
 
   function kurMerretPozicioni(position: GeolocationPosition) {
-    setPritje(false);
     const metra = Math.round(position.coords.accuracy);
-    setMesazh(`Pozicioni u mor. Saktësia rreth ${metra} m. Shkruaj një vend të dallueshëm.`);
+    setSaktesia(metra);
+    setGjendja("success");
+    setMesazh("Pozicioni u mor. Shkruaj një vend të dallueshëm.");
   }
 
   function kurDeshtonLeximi(error: { code: number }) {
-    setPritje(false);
+    setSaktesia(null);
     if (error.code === 1) {
+      setGjendja("denied");
       setMesazh("Leja u refuzua. Shkruaj vendtakimin vetë.");
-    } else if (error.code === 2) {
-      setMesazh("Pozicioni nuk është i disponueshëm. Shkruaj vendtakimin vetë.");
     } else if (error.code === 3) {
+      setGjendja("timeout");
       setMesazh("Koha mbaroi. Provo sërish ose shkruaj vendtakimin vetë.");
     } else {
-      setMesazh("Leximi dështoi. Shkruaj vendtakimin vetë.");
+      setGjendja("unavailable");
+      setMesazh("Pozicioni nuk është i disponueshëm. Shkruaj vendtakimin vetë.");
     }
   }
 
   function perdorVendndodhjen() {
+    setSaktesia(null);
     if (!("geolocation" in navigator)) {
+      setGjendja("unavailable");
       setMesazh("Ky shfletues nuk e mbështet vendndodhjen. Shkruaj vendtakimin vetë.");
       return;
     }
-    setPritje(true);
+    setGjendja("loading");
     setMesazh("Po kërkojmë vendndodhjen…");
     navigator.geolocation.getCurrentPosition(
       kurMerretPozicioni,
@@ -54,17 +61,22 @@ export function Vendtakimi() {
   }
 
   return (
-    <section className="vendtakimi" data-testid="vendtakimi">
+    <section className="vendtakimi">
       <button
         type="button"
         className="action"
         onClick={perdorVendndodhjen}
-        disabled={pritje}
-        data-testid="vendndodhja-buton"
+        disabled={gjendja === "loading"}
+        data-testid="locate-me"
       >
         Përdor vendndodhjen time
       </button>
-      <p role="status" data-testid="vendndodhja-mesazh">{mesazh}</p>
+      <p role="status" data-testid="location-status" data-state={gjendja}>
+        {mesazh}
+      </p>
+      <p data-testid="location-accuracy">
+        {saktesia !== null ? `Saktësia rreth ${saktesia} m` : ""}
+      </p>
 
       <label htmlFor="vendtakimi-fusha">Shkruaj vendtakimin</label>
       <input
@@ -73,19 +85,20 @@ export function Vendtakimi() {
         value={teksti}
         onChange={(e) => setTeksti(e.target.value)}
         placeholder="p.sh. Biblioteka"
-        data-testid="vendtakimi-fusha"
+        data-testid="meeting-input"
       />
       <button
         type="button"
         className="action"
         onClick={konfirmo}
-        data-testid="vendtakimi-konfirmo"
+        data-testid="confirm-meeting"
       >
         Konfirmo në telefon
       </button>
-      {gabimFushe && <p role="alert" data-testid="vendtakimi-gabim">{gabimFushe}</p>}
-      <p data-testid="vendtakimi-konfirmuar">
-        Vendtakimi i konfirmuar: {vendtakimi || "asnjë ende"}
+      <p role="alert" data-testid="meeting-error">{gabimFushe}</p>
+      <p>
+        Vendtakimi i konfirmuar:{" "}
+        <span data-testid="confirmed-meeting">{vendtakimi || "asnjë ende"}</span>
       </p>
     </section>
   );
