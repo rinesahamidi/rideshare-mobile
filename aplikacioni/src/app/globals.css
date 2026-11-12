@@ -40,4 +40,15 @@ main { max-width: 720px; margin: auto; padding: 24px; }
 .vendtakimi input { min-height: 44px; padding: 8px 12px; border-radius: 8px;
   border: 1px solid #8090aa; background: #111a2e; color: inherit; }
 .vendtakimi .action { margin-top: 0; justify-self: start; }
+/* Java 9: butoni "Ruaj udhëtimin" (si në skicë: i verdhë me yll) */
+.preferimi { margin-top: 16px; max-width: 360px; }
+.action.ruaj { gap: 8px; width: 100%; font-weight: 700; font-size: 1.05rem;
+  background: #4a3c23; border: 1px solid #f0c674; color: #ffe2a8; cursor: pointer; }
+.action.ruaj span { color: #f0c674; font-size: 1.2rem; }
+.action.ruaj:disabled { background: #4a3c23; color: #ffe2a8; opacity: 1; cursor: default; }
+.action.ruaj[data-state="success"], .action.ruaj[data-state="success"] span { color: #9ff0c8; }
+.action.ruaj[data-state="error"], .action.ruaj[data-state="error"] span { color: #ffb3c1; }
+.ruaj-mesazh[data-state="pending"] { color: #f0c674; }
+.ruaj-mesazh[data-state="success"] { color: #9ff0c8; }
+.ruaj-mesazh[data-state="error"] { color: #ffb3c1; }
 h1 { font-size: 1.6rem; font-weight: 700; margin-bottom: 8px; }
