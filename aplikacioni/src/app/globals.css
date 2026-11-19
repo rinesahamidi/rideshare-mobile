@@ -52,3 +52,24 @@ main { max-width: 720px; margin: auto; padding: 24px; }
 .ruaj-mesazh[data-state="success"] { color: #9ff0c8; }
 .ruaj-mesazh[data-state="error"] { color: #ffb3c1; }
 h1 { font-size: 1.6rem; font-weight: 700; margin-bottom: 8px; }
+/* Java 10: ekrani i sinkronizuar i kërkesës */
+.sync-card { max-width: 360px; display: grid; gap: 10px; }
+.sync-card p { margin: 0; }
+.sync-perdoruesi { color: #72e6d6; }
+.sync-etiketa { font-size: 0.75rem; letter-spacing: 0.06em; color: #c9d4e6; }
+.sync-kutia { border: 1px solid #45566f; border-radius: 10px; padding: 12px; background: #1b2a42; display: grid; gap: 4px; }
+.sync-kutia.kerkesa { background: #20323f; }
+.sync-nisja { font-size: 1.3rem; font-weight: 700; }
+.sync-rreshti { display: flex; justify-content: space-between; margin-top: 8px; }
+.sync-rreshti div { display: grid; }
+.sync-rreshti .djathtas { text-align: right; }
+.sync-rreshti strong { font-size: 1.5rem; }
+.sync-statusi { font-size: 1.25rem; font-weight: 700; color: #ffd98a; }
+.sync-statusi[data-statusi="pranuar"] { color: #72e6d6; }
+.sync-buton { width: 100%; min-height: 44px; border-radius: 10px; border: 0; font-weight: 700;
+  background: #72e6d6; color: #0b1220; cursor: pointer; }
+.sync-buton:disabled { cursor: default; }
+.sync-card[data-offline="true"] .sync-buton { background: #39455b; color: #e4eaf4; }
+.sync-gjendja { color: #72e6d6; }
+.sync-gjendja.offline { color: #ff9e9e; }
+.sync-mesazh { color: #c9d4e6; }

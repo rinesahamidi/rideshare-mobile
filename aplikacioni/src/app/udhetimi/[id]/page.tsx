@@ -38,11 +38,10 @@ export default async function Detajet({
       <p>Ora: {udhetim.ora}</p>
       <p>Vendtakimi: {udhetim.vendtakimi}</p>
       <p>Vende të lira: {udhetim.vende}</p>
-      {udhetim.vende > 0 ? (
-        <Link className="action" href={`/udhetimi/${id}/kerkesa`}>
-          Kërko vend
-        </Link>
-      ) : <button className="action" disabled>Nuk ka vende të lira</button>}
+      {/* Shoferi pronar përdor të njëjtën faqe për të parë dhe pranuar kërkesat. */}
+      <Link className="action" href={`/udhetimi/${id}/kerkesa`}>
+        {udhetim.vende > 0 ? "Kërko vend / Kërkesat" : "Kërkesat (nuk ka vende të lira)"}
+      </Link>
       {profili ? (
         <RuajUdhetimin
           udhetimiId={udhetim.id}
